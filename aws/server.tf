@@ -9,11 +9,11 @@ resource "aws_instance" "server" {
   instance_type = "${var.ec2_instance_type}"
   key_name      = "${var.key_pair_name}"
 
-  user_data = "${file("server.sh")}"
+  user_data = "${file("scripts/server.sh")}"
 
   provisioner "file" {
     source      = "nginx/server.conf"
-    destination = "/home/ubuntu/example.com"
+    destination = "/home/ubuntu/www.example.com"
 
     connection {
       type        = "ssh"
